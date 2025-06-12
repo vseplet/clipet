@@ -160,7 +160,7 @@ export const home = async () => {
       <span class="social-share">${
           Object.entries(socialNetworks)
             .map(([key, network]) =>
-              `<a href="${network.shareUrl}" style="color: ${network.color}" data-tooltip="Share on ${network.name}! ${network.icon}">${network.icon}</a>`
+              `<a href="${network.shareUrl}" style="color: ${network.color}" data-tooltip="Share on ${network.name}!">${network.icon}</a>`
             )
             .join(" ")
         }
