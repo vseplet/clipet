@@ -13,7 +13,21 @@ export const home = async () => {
   return `
 <html>
   <head>
-    <title>CliPet</title>
+    <meta charset="UTF-8">
+    <title>Tamagotchi-pomodoro for the cli</title>
+    <link rel="icon" href="data:image/svg+xml,
+    %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
+      %3Ctext y='0.9em' font-size='90'%3E🍅%3C/text%3E
+    %3C/svg%3E" />
+
+    <meta property="og:title" content="Tamagotchi-pomodoro for the cli">
+    <meta property="og:description" content="Tamagotchi-pomodoro for the cli">
+    <meta property="og:image" content="https://clipet.deno.dev/og-image.png" />
+    <meta property="og:url" content="https://clipet.deno.dev" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Tamagotchi-pomodoro for the cli" />
+
     <style>
       * {
         background: rgb(54 31 57);
