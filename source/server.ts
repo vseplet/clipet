@@ -8,7 +8,9 @@ import {
 } from "./common.ts";
 
 // deno-fmt-ignore
-export const home = async () => `
+export const home = async () => {
+  const stars = await getGitHubStars();
+  return `
 <html>
   <head>
     <title>CliPet</title>
@@ -36,6 +38,29 @@ export const home = async () => `
       .installs {
         color: rgb(0 239 255);
       }
+
+      .stars {
+        color: rgb(255 236 0);
+      }
+
+      .stars a {
+        position: relative;
+        // text-decoration: none;
+      }
+
+      .stars a:hover::after {
+        content: "Star this project on GitHub! 🌟";
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background: #fff;
+        color: #000;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 16px;
+        white-space: nowrap;
+        z-index: 1;
+      }
     </style>
   </head>
   <body>
@@ -46,7 +71,9 @@ export const home = async () => `
           (url) => `<a href="${url}">${url}</a>`,
         )
       }</span>
-      <span class="installs">Total installs: ${(await kv.get(["installs"])).value}</span>
+      <span class="installs">Total installs:  ${(await kv.get(["installs"])).value}</span>
+
+      <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars: ${stars}</a></span>
 
       <span class="header">Install / Update</span>
 
@@ -62,6 +89,21 @@ export const home = async () => `
   </body>
 </html>
 `;
+};
+
+const getGitHubStars = async (): Promise<string> => {
+  try {
+    const response = await fetch(`https://api.github.com/repos/vseplet/${toolName}`);
+    if (!response.ok) {
+      return "N/A";
+    }
+    const data = await response.json();
+    return data.stargazers_count.toString();
+  } catch (e) {
+    console.error("Failed to fetch GitHub stars:", e);
+    return "N/A";
+  }
+};
 
 const updateInstallsCount = async () => {
   try {
