@@ -19,7 +19,7 @@ export const introText = `
       🍅 Tamagotchi-pomodoro timer for the cli
 
       Created by Vsevolod Pletnev
-      https://linkedin.com/in/sevapp
+      https://x.com/vseplet
 
       Source Code:
       https://github.com/vseplet/${toolName}

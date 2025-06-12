@@ -20,6 +20,11 @@ export const home = async () => {
       %3Ctext y='0.9em' font-size='90'%3E🍅%3C/text%3E
     %3C/svg%3E" />
 
+    <meta name="description" content="Tamagotchi-pomodoro for the cli">
+    <meta name="keywords" content="tamagotchi, pomodoro, cli, timer">
+    <meta name="author" content="Vsevolod Pletnev">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta property="og:title" content="Tamagotchi-pomodoro for the cli">
     <meta property="og:description" content="Tamagotchi-pomodoro for the cli">
     <meta property="og:image" content="https://clipet.deno.dev/og-image.png" />
@@ -57,6 +62,29 @@ export const home = async () => {
         color: rgb(255 236 0);
       }
 
+      .twitter {
+        color: rgb(29 161 242);
+      }
+
+      .twitter a {
+        color: inherit;
+        position: relative;
+      }
+
+      .twitter a:hover::after {
+        content: "Share on Twitter! 🐦";
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background: #fff;
+        color: #000;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 16px;
+        white-space: nowrap;
+        z-index: 1;
+      }
+
       .stars a {
         position: relative;
       }
@@ -86,7 +114,7 @@ export const home = async () => {
       }</span>
       <span style="color: orange">🚀 Total installs: ${(await kv.get(["installs"])).value}</span>
 
-      <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a>   ${stars}</span>
+      <span class="twitter"><a href="https://twitter.com/intent/tweet?text=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!%20https://github.com/vseplet/${toolName}">🐦 Share on Twitter</a></span> | <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a> ${stars}</span>
 
       <span class="header">Install / Update</span>
 
