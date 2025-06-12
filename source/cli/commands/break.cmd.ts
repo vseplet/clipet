@@ -1,0 +1,7 @@
+import { Command } from "@cliffy/command";
+
+export const breakCommand = new Command()
+  .description("Start a break")
+  .action(() => {
+    console.log("break");
+  });

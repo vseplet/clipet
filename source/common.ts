@@ -16,7 +16,7 @@ export const introText = `
       |  |--||  |---|   ||   __/|   __|\\-  -/
       \\_____/\\_____/\\___/\\__/   \\_____/ |__|
 
-      Tamagotchi-pomodoro for the command line
+      🍅 Tamagotchi-pomodoro timer for the cli
 
       Created by Vsevolod Pletnev
       https://linkedin.com/in/sevapp
@@ -28,7 +28,7 @@ export const introText = `
 export const installCommand =
   `deno install -g -f -r --unstable-kv --allow-net=${
     baseURL.split("//")[1]
-  } ${baseURL}/cli.ts -n ${toolName}`;
+  } ${baseURL}/cli/mod.ts --import-map=${baseURL}/import-map.json -n ${toolName}`;
 
 export const shScript = `
 if ! command -v deno &> /dev/null

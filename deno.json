@@ -2,7 +2,8 @@
   "lock": false,
   "version": "0.1.0",
   "tasks": {
-    "cli": "deno -A --env-file --unstable-kv ./source/cli.ts",
+    "cli": "deno -A --env-file --unstable-kv ./source/cli/mod.ts",
     "dev": "deno --unstable-kv -A --env-file --watch ./source/server.ts"
-  }
+  },
+  "importMap": "./source/import-map.json"
 }

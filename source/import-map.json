@@ -1,0 +1,15 @@
+{
+  "imports": {
+    "$/": "./",
+    "$cli/": "./cli/",
+
+    "@std/fmt/colors": "jsr:@std/fmt@1.0.8/colors",
+
+    "@cliffy/command": "jsr:@cliffy/command@1.0.0-rc.7",
+    "@cliffy/table": "jsr:@cliffy/table@1.0.0-rc.5",
+    "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.5",
+    "@cliffy/prompt/select": "jsr:@cliffy/prompt@1.0.0-rc.7/select",
+    "@cliffy/prompt/input": "jsr:@cliffy/prompt@1.0.0-rc.7/input",
+    "@cliffy/prompt/prompt": "jsr:@cliffy/prompt@1.0.0-rc.7/prompt"
+  }
+}
