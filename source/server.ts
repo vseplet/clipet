@@ -16,7 +16,7 @@ export const home = async () => {
     <title>CliPet</title>
     <style>
       * {
-        background: rgb(60 14 99);
+        background: rgb(54 31 57);
         color: white;
         font-family: monospace;
       }
@@ -45,7 +45,6 @@ export const home = async () => {
 
       .stars a {
         position: relative;
-        // text-decoration: none;
       }
 
       .stars a:hover::after {
@@ -71,9 +70,9 @@ export const home = async () => {
           (url) => `<a href="${url}">${url}</a>`,
         )
       }</span>
-      <span class="installs">Total installs:  ${(await kv.get(["installs"])).value}</span>
+      <span style="color: orange">🚀 Total installs: ${(await kv.get(["installs"])).value}</span>
 
-      <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars: ${stars}</a></span>
+      <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a>   ${stars}</span>
 
       <span class="header">Install / Update</span>
 
@@ -86,6 +85,8 @@ export const home = async () => {
 
         Unix-like: <span class="sh">curl -sL ${domain}</span>
         Windows:   <span class="sh">irm ${domain}</span>
+
+      <span class="header">How to use</span>
   </body>
 </html>
 `;
