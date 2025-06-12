@@ -7,6 +7,45 @@ import {
   toolName,
 } from "./common.ts";
 
+const socialNetworks = {
+  twitter: {
+    name: "Twitter/X",
+    color: "rgb(29 161 242)",
+    icon: "🐦 X ",
+    shareUrl: `https://twitter.com/intent/tweet?text=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!%20https://github.com/vseplet/${toolName}`,
+  },
+  facebook: {
+    name: "Facebook",
+    color: "rgb(66 103 178)",
+    icon: "👥 FB ",
+    shareUrl: `https://www.facebook.com/sharer/sharer.php?u=https://github.com/vseplet/${toolName}`,
+  },
+  reddit: {
+    name: "Reddit",
+    color: "rgb(255 69 0)",
+    icon: "🔴 Reddit ",
+    shareUrl: `https://www.reddit.com/submit?url=https://github.com/vseplet/${toolName}&title=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!`,
+  },
+  hackernews: {
+    name: "Hacker News",
+    color: "rgb(255 102 0)",
+    icon: "🧡 HN ",
+    shareUrl: `https://news.ycombinator.com/submitlink?u=https://github.com/vseplet/${toolName}&t=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!`,
+  },
+  linkedin: {
+    name: "LinkedIn",
+    color: "rgb(0 119 181)",
+    icon: "💼 LinkedIn ",
+    shareUrl: `https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/vseplet/${toolName}`,
+  },
+  mastodon: {
+    name: "Mastodon",
+    color: "rgb(99 100 255)",
+    icon: "🐘 Mastodon ",
+    shareUrl: `https://mastodon.social/share?text=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!%20https://github.com/vseplet/${toolName}`,
+  },
+};
+
 // deno-fmt-ignore
 export const home = async () => {
   const stars = await getGitHubStars();
@@ -62,17 +101,20 @@ export const home = async () => {
         color: rgb(255 236 0);
       }
 
-      .twitter {
-        color: rgb(29 161 242);
+      .social-share {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
       }
 
-      .twitter a {
+      .social-share a {
         color: inherit;
         position: relative;
+        text-decoration: none;
       }
 
-      .twitter a:hover::after {
-        content: "Share on Twitter! 🐦";
+      .social-share a:hover::after {
+        content: attr(data-tooltip);
         position: absolute;
         left: 0;
         top: 100%;
@@ -114,7 +156,17 @@ export const home = async () => {
       }</span>
       <span style="color: orange">🚀 Total installs: ${(await kv.get(["installs"])).value}</span>
 
-      <span class="twitter"><a href="https://twitter.com/intent/tweet?text=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!%20https://github.com/vseplet/${toolName}">🐦 Share on Twitter</a></span> | <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a> ${stars}</span>
+      Share on
+      <span class="social-share">${
+          Object.entries(socialNetworks)
+            .map(([key, network]) =>
+              `<a href="${network.shareUrl}" style="color: ${network.color}" data-tooltip="Share on ${network.name}! ${network.icon}">${network.icon}</a>`
+            )
+            .join(" ")
+        }
+      </span>
+
+      <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a> ${stars}</span>
 
       <span class="header">Install / Update</span>
 
