@@ -11,37 +11,37 @@ const socialNetworks = {
   twitter: {
     name: "Twitter/X",
     color: "rgb(29 161 242)",
-    icon: "🐦 X ",
+    icon: "🐦 X",
     shareUrl: `https://twitter.com/intent/tweet?text=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!%20https://github.com/vseplet/${toolName}`,
   },
   facebook: {
     name: "Facebook",
     color: "rgb(66 103 178)",
-    icon: "👥 FB ",
+    icon: "👥 FB",
     shareUrl: `https://www.facebook.com/sharer/sharer.php?u=https://github.com/vseplet/${toolName}`,
   },
   reddit: {
     name: "Reddit",
     color: "rgb(255 69 0)",
-    icon: "🔴 Reddit ",
+    icon: "🔴 Reddit",
     shareUrl: `https://www.reddit.com/submit?url=https://github.com/vseplet/${toolName}&title=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!`,
   },
   hackernews: {
     name: "Hacker News",
     color: "rgb(255 102 0)",
-    icon: "🧡 HN ",
+    icon: "🧡 HN",
     shareUrl: `https://news.ycombinator.com/submitlink?u=https://github.com/vseplet/${toolName}&t=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!`,
   },
   linkedin: {
     name: "LinkedIn",
     color: "rgb(0 119 181)",
-    icon: "💼 LinkedIn ",
+    icon: "💼 LinkedIn",
     shareUrl: `https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/vseplet/${toolName}`,
   },
   mastodon: {
     name: "Mastodon",
     color: "rgb(99 100 255)",
-    icon: "🐘 Mastodon ",
+    icon: "🐘 Mastodon",
     shareUrl: `https://mastodon.social/share?text=Check%20out%20${toolName}%20-%20a%20tamagotchi-pomodoro%20for%20the%20cli!%20https://github.com/vseplet/${toolName}`,
   },
 };
@@ -110,7 +110,6 @@ export const home = async () => {
       .social-share a {
         color: inherit;
         position: relative;
-        text-decoration: none;
       }
 
       .social-share a:hover::after {
@@ -164,40 +163,41 @@ export const home = async () => {
     <!-- /Yandex.Metrika counter -->
   </head>
   <body>
-    <pre>
-      <span class="header">${
-        introText.replace(
-          /https?:\/\/[^\s]+/g,
-          (url) => `<a href="${url}">${url}</a>`,
+<pre>
+  <span class="header">${
+    introText.replace(
+      /https?:\/\/[^\s]+/g,
+      (url) => `<a href="${url}">${url}</a>`,
+    )
+  }</span>
+  <span style="color: orange">🚀 Total installs: ${(await kv.get(["installs"])).value}</span>
+
+  Share on
+  <span class="social-share">${
+      Object.entries(socialNetworks)
+        .map(([key, network]) =>
+          `<a href="${network.shareUrl}" style="color: ${network.color}" data-tooltip="Share on ${network.name}!">${network.icon}</a>`
         )
-      }</span>
-      <span style="color: orange">🚀 Total installs: ${(await kv.get(["installs"])).value}</span>
+        .join(" ")
+    }
+  </span>
 
-      Share on
-      <span class="social-share">${
-          Object.entries(socialNetworks)
-            .map(([key, network]) =>
-              `<a href="${network.shareUrl}" style="color: ${network.color}" data-tooltip="Share on ${network.name}!">${network.icon}</a>`
-            )
-            .join(" ")
-        }
-      </span>
+  <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a> ${stars}</span>
 
-      <span class="stars"><a href="https://github.com/vseplet/${toolName}" style="color: rgb(255 236 0);">⭐ GitHub Stars:</a> ${stars}</span>
+  <span class="header">Install / Update</span>
 
-      <span class="header">Install / Update</span>
+    Unix-like: <span class="sh">curl -fsSL ${domain} | sh</span>
+    Windows:   <span class="sh">irm ${domain} | iex</span>
 
-        Unix-like: <span class="sh">curl -fsSL ${domain} | sh</span>
-        Windows:   <span class="sh">irm ${domain} | iex</span>
+  <span class="header">Run</span>          <span class="sh">${toolName}</span>
 
-      <span class="header">Run</span>          <span class="sh">${toolName}</span>
+  <span class="header">View installation script</span>
 
-      <span class="header">View installation script</span>
+    Unix-like: <span class="sh">curl -sL ${domain}</span>
+    Windows:   <span class="sh">irm ${domain}</span>
 
-        Unix-like: <span class="sh">curl -sL ${domain}</span>
-        Windows:   <span class="sh">irm ${domain}</span>
-
-      <span class="header">How to use</span>
+  <span class="header">How to use</span>
+</pre>
   </body>
 </html>
 `;

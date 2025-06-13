@@ -11,18 +11,18 @@ export const domain = baseURL.split("//")[1];
 export const toolName = "clipet";
 
 export const introText = `
-       _____  ____   ___  _____  _____  ____
-      /     \\/  _/  /___\\/  _  \\/   __\\/    \\
-      |  |--||  |---|   ||   __/|   __|\\-  -/
-      \\_____/\\_____/\\___/\\__/   \\_____/ |__|
+   _____  ____   ___  _____  _____  ____
+  /     \\/  _/  /___\\/  _  \\/   __\\/    \\
+  |  |--||  |---|   ||   __/|   __|\\-  -/
+  \\_____/\\_____/\\___/\\__/   \\_____/ |__|
 
-      🍅 Tamagotchi-pomodoro timer for the cli
+  🍅 Tamagotchi-pomodoro timer for the cli
 
-      Created by Vsevolod Pletnev
-      https://x.com/vseplet
+  Created by Vsevolod Pletnev
+  https://x.com/vseplet
 
-      Source Code:
-      https://github.com/vseplet/${toolName}
+  Source Code:
+  https://github.com/vseplet/${toolName}
 `;
 
 export const installCommand =
